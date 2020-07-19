@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Forum</h5>
                             <p class="card-text">Let's discuss Together</p>
-                            <a href="#" class="btn btn-primary">Enter Forum</a>
+                            <a href="{{url('/forum')}}" class="btn btn-primary">Enter Forum</a>
                         </div>
                     </div>
                 </div>
