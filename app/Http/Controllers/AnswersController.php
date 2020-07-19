@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Question;
+use App\Answer;
 
-class QuestionsController extends Controller
+class AnswersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,6 @@ class QuestionsController extends Controller
     public function index()
     {
         //
-        $question=Question::all();
-        return view('questions/index',compact('question'));
     }
 
     /**
@@ -28,7 +26,6 @@ class QuestionsController extends Controller
     public function create()
     {
         //
-        return view('questions/create');
     }
 
     /**
@@ -39,14 +36,14 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // Question::create($request->all());
-        Question::create([
-            'question' => $request->question,
-            'detail_question' => $request->detail_question,
+        Answer::create([
+            'answer' => $request->answer,
+            'question_id' => $request->question_id,
             'user_id' => Auth::user()->id
         ]);
-        return redirect('/forum')->with('status','Question Posted Successfully');
+        return redirect("/forum/$request->question_id")->with('status','Answer Posted Successfully');
+
+
     }
 
     /**
@@ -55,10 +52,9 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show($id)
     {
         //
-        return view('questions.show',compact('question'));
     }
 
     /**

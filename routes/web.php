@@ -24,3 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/forum','QuestionsController@index');
 Route::get('/forum/create','QuestionsController@create');
 Route::post('/forum','QuestionsController@store');
+Route::get('/forum/{question}','QuestionsController@show');
+
+Route::post('/forum/post','AnswersController@store');
