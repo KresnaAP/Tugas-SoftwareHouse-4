@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Question;
 
 class QuestionsController extends Controller
@@ -27,6 +28,7 @@ class QuestionsController extends Controller
     public function create()
     {
         //
+        return view('questions/create');
     }
 
     /**
@@ -38,6 +40,13 @@ class QuestionsController extends Controller
     public function store(Request $request)
     {
         //
+        // Question::create($request->all());
+        Question::create([
+            'question' => $request->question,
+            'detail_question' => $request->detail_question,
+            'user_id' => Auth::user()->id
+        ]);
+        return redirect('/forum')->with('status','Question Posted Successfully');
     }
 
     /**
