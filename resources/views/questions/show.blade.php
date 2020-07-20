@@ -9,6 +9,15 @@
                         <h5 class="card-title">{{$question->question}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{$question->created_at}} Author:{{$question->user->username}}</h6>
                         <p class="card-text">{{$question->detail_question}}</p>
+                        
+                        @if( Auth::user()->id === $question->user_id)
+                            <form action="{{$question->id}}" method="post" class="d-inline">
+                                @method('patch')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Edit</button>
+                            </form>
+                        @endif
+                        
                     </div>
                 </div>
             </div>
@@ -16,10 +25,10 @@
 
         <div class="row">
             <div class="col">
-            <form action='{{$question->id}}' method="POST">
+            <form action='{{url("/forum/$question->id")}}' method="POST">
                 @csrf
                 @method('put')
-                <input type="hidden" name="question_id" value="{{$question->id}}">
+                
                 <div class="form-group">
                     <label for="answer">Answer</label>
                     <textarea class="form-control" id="answer" name="answer" rows="3"></textarea>

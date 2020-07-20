@@ -67,9 +67,10 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Question $question)
     {
         //
+        return view('questions.edit',compact('question'));
     }
 
     /**
@@ -79,9 +80,17 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Question $question)
     {
         //
+        Question::where('id',$question->id)
+            ->update([
+                'question' => $request->question,
+                'detail_question' => $request->detail_question,
+            ]);
+
+
+        return redirect("/forum/$question->id")->with('status','Data mahasiswa berhasil diupdate');
     }
 
     /**

@@ -43,7 +43,7 @@ class AnswersController extends Controller
             'question_id' => $question_id,
             'user_id' => Auth::user()->id
         ]);
-        return redirect("/forum/$request->question_id")->with('status','Answer Posted Successfully');
+        return redirect("/forum/$question_id")->with('status','Answer Posted Successfully');
 
 
     }
