@@ -1,5 +1,6 @@
 # Instruction :
 1. Install `laravel/ui` package
+
     ```sh
     $ composer require laravel/ui
     ```
@@ -7,7 +8,7 @@
     ```sh
     $ composer dump-autoload
     ```
-3. Create a database named `competition` in your `SQL` and to create basic users table, run
+3. Create a database named `laravel` in your `SQL` and to create basic users table, run
     ```sh
     $ php artisan migrate --seed
     ``` 
