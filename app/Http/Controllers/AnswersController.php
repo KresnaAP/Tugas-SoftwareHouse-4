@@ -34,17 +34,21 @@ class AnswersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    
+     public function store($question_id,Request $request)
     {
         Answer::create([
             'answer' => $request->answer,
-            'question_id' => $request->question_id,
+            'question_id' => $question_id,
             'user_id' => Auth::user()->id
         ]);
         return redirect("/forum/$request->question_id")->with('status','Answer Posted Successfully');
 
 
     }
+
+
 
     /**
      * Display the specified resource.

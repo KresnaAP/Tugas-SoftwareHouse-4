@@ -16,8 +16,9 @@
 
         <div class="row">
             <div class="col">
-            <form action='{{url("/forum/post")}}' method="POST">
+            <form action='{{$question->id}}' method="POST">
                 @csrf
+                @method('put')
                 <input type="hidden" name="question_id" value="{{$question->id}}">
                 <div class="form-group">
                     <label for="answer">Answer</label>
