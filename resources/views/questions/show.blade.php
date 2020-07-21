@@ -10,7 +10,7 @@
                         <h6 class="card-subtitle mb-2 text-muted">{{$question->created_at}} - {{$question->user->username}}</h6>
                         <p class="card-text">{{$question->detail_question}}</p>
 
-                        @if( Auth::user()->id === $question->user_id)
+                        @if(Auth::user()->id === $question->user_id)
                             <form action='{{url("/forum/$question->id")}}' method="post" class="d-inline">
                                 @method('patch')
                                 @csrf

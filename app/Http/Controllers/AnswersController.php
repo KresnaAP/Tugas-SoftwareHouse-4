@@ -17,9 +17,18 @@ class AnswersController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {
         //
+    }
+
+    public function showAnswer()
+    {
+        //
+        $lista=Answer::all();
+        // echo $lista;
+        return view('questions/answer',compact('lista'));
     }
 
     /**

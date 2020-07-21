@@ -25,6 +25,14 @@ class QuestionsController extends Controller
         return view('questions/index',compact('question'));
     }
 
+    public function showQuestion()
+    {
+        //
+        $listq=Question::all();
+        // echo $listq;
+        return view('questions/question',compact('listq'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
