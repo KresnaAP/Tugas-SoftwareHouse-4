@@ -35,7 +35,7 @@ class AnswersController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
+
      public function store($question_id,Request $request)
     {
         Answer::create([
@@ -44,8 +44,6 @@ class AnswersController extends Controller
             'user_id' => Auth::user()->id
         ]);
         return redirect("/forum/$question_id")->with('status','Answer Posted Successfully');
-
-
     }
 
 
