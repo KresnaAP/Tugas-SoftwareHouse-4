@@ -90,7 +90,7 @@ class QuestionsController extends Controller
             ]);
 
 
-        return redirect("/forum/$question->id")->with('status','Data mahasiswa berhasil diupdate');
+        return redirect("/forum/$question->id")->with('status','Success');
     }
 
     /**

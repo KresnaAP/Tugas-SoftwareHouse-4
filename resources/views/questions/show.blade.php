@@ -11,7 +11,7 @@
                         <p class="card-text">{{$question->detail_question}}</p>
                         
                         @if( Auth::user()->id === $question->user_id)
-                            <form action="{{$question->id}}" method="post" class="d-inline">
+                            <form action='{{url("/forum/$question->id")}}' method="post" class="d-inline">
                                 @method('patch')
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Edit</button>
@@ -47,6 +47,13 @@
                         <h5 class="card-title"></h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{$i->created_at}} by:{{$i->user->username}}</h6>
                         <p class="card-text">{{$i->answer}}</p>
+                        @if(Auth::user()->id === $i->user_id)
+                            <form action='{{url("/forum/answer/$i->id")}}' method="post" class="d-inline">
+                                @method('patch')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Edit</button>
+                            </form>
+                        @endif
                     </div>    
                 </div>
             </div>

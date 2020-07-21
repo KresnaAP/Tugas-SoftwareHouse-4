@@ -67,9 +67,10 @@ class AnswersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Answer $answer)
     {
         //
+        return view('answers.edit',compact('answer'));
     }
 
     /**
@@ -79,9 +80,17 @@ class AnswersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Answer $answer)
     {
         //
+        Answer::where('id',$answer->id)
+        ->update([
+            'answer' => $request->answer,
+        ]);
+
+
+        return redirect("/forum/$answer->question_id")->with('status','Success');
+
     }
 
     /**

@@ -31,3 +31,5 @@ Route::put('/forum/{id}','AnswersController@store');
 Route::patch('/forum/{question}','QuestionsController@edit');
 Route::post('/forum/{question}/update','QuestionsController@update');
 
+Route::patch('/forum/answer/{answer}','AnswersController@edit');
+Route::post('/forum/answer/{answer}/update','AnswersController@update');
