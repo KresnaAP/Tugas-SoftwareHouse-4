@@ -26,8 +26,7 @@ class AnswersController extends Controller
     public function showAnswer()
     {
         //
-        $lista=Answer::all();
-        // echo $lista;
+        $lista=Answer::where('user_id', auth()->id())->orderByRaw('created_at DESC')->paginate(5);
         return view('questions/answer',compact('lista'));
     }
 

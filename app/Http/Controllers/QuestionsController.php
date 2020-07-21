@@ -21,15 +21,14 @@ class QuestionsController extends Controller
     public function index()
     {
         //
-        $question=Question::paginate(5);
+        $question=Question::orderByRaw('created_at DESC')->paginate(5);
         return view('questions/index',compact('question'));
     }
 
     public function showQuestion()
     {
         //
-        $listq=Question::all();
-        // echo $listq;
+        $listq=Question::where('user_id', auth()->id())->orderByRaw('created_at DESC')->paginate(5);
         return view('questions/question',compact('listq'));
     }
 

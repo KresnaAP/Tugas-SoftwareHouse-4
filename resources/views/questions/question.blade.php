@@ -13,6 +13,9 @@
                     </div>
                 </a>
             @endforeach
+            <div class="mt-3">
+                {{ $listq->links() }}
+            </div>
         </div>
     </div>
 @endsection
