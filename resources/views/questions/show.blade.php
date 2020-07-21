@@ -56,7 +56,7 @@
                             <form action='{{url("/forum/answer/$i->id")}}' method="post" class="d-inline">
                                 @method('patch')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">Edit</button>
+                                <button type="submit" class="btn btn-success">Edit</button>
                             </form>
                         @endif
                     </div>
