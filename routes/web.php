@@ -37,3 +37,5 @@ Route::post('/forum/answer/{answer}/update','AnswersController@update');
 
 Route::get('/question','QuestionsController@showQuestion');
 Route::get('/answer','AnswersController@showAnswer');
+
+Route::post("/forum/search",'QuestionsController@search');

@@ -4,6 +4,14 @@
     <div class="container">
         <a href="{{url('/forum/create')}}" class="btn btn-primary">Add New Question</a>
 
+        <form method="post" action='{{url("/forum/search")}}' class="d-inline ml-3">
+            @csrf
+            <div class="form-group">
+                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Keyword">
+            </div>
+            <button type="submit" class="btn btn-success">Search</button>
+        </form>
+
         <div class="list-group mt-3">
             @foreach($question as $i)
             <a href='{{url("forum/$i->id")}}' class="list-group-item list-group-item-action">

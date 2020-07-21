@@ -17,7 +17,7 @@
                                 <button type="submit" class="btn btn-success">Edit</button>
                             </form>
 
-                            <form method="post" action="{{url("/forum/$question->id")}}" class="d-inline ml-3">
+                            <form method="post" action='{{url("/forum/$question->id")}}' class="d-inline ml-3">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Delete</button>

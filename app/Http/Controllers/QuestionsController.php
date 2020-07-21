@@ -117,4 +117,12 @@ class QuestionsController extends Controller
 
         return redirect("/forum")->with('status','Success');
     }
+
+    public function search(Request $request){
+        $question=Question::where('question','like',"%$request->keyword%")
+            ->orderByRaw('created_at DESC')
+            ->paginate(5);
+
+        return view('questions.index',compact('question'));
+    }
 }

@@ -16,4 +16,9 @@ class Question extends Model
     public function answers(){
         return $this->hasMany(Answer::class);
     }
+
+    public function shouldBeSearchable()
+    {
+        return $this->isPublished();
+    }
 }
