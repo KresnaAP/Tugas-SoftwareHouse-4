@@ -53,6 +53,10 @@ class QuestionsController extends Controller
     {
         //
         // Question::create($request->all());
+        $request->validate([
+            "question" => "required",
+            "detail_question" => "required",
+        ]);
         Question::create([
             'question' => $request->question,
             'detail_question' => $request->detail_question,
