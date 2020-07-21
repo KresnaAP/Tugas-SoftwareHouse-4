@@ -17,10 +17,11 @@ class QuestionsController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {
         //
-        $question=Question::all();
+        $question=Question::paginate(5);
         return view('questions/index',compact('question'));
     }
 

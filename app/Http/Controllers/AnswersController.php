@@ -90,9 +90,7 @@ class AnswersController extends Controller
             'answer' => $request->answer,
         ]);
 
-
         return redirect("/forum/$answer->question_id")->with('status','Success');
-
     }
 
     /**

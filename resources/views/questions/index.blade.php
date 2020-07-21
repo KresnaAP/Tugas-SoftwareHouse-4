@@ -14,6 +14,9 @@
                 </div>
             </a>
             @endforeach
+            <div class="mt-3">
+                {{ $question->links() }}
+            </div>
         </div>
     </div>
 @endsection
