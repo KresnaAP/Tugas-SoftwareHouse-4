@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
         <h2>Edit Question</h2>
-        <div>{{$question}}</div>
         <form action='{{url("/forum/$question->id")}}/update' method="POST">
             @csrf
             <div class="form-group">

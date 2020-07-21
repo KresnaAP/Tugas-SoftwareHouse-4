@@ -107,8 +107,12 @@ class AnswersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Answer $answer)
     {
         //
+        $getid=$answer->question_id;
+        Answer::destroy($answer->id);
+
+        return redirect("/forum/$getid")->with('status','Success');
     }
 }

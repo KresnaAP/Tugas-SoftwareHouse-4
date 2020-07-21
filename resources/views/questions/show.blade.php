@@ -7,7 +7,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{$question->question}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{$question->created_at}} - {{$question->user->username}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Upload : {{$question->created_at}} - Edited : {{$question->updated_at}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Author : {{$question->user->username}}</h6>
                         <p class="card-text">{{$question->detail_question}}</p>
 
                         @if(Auth::user()->id === $question->user_id)
@@ -50,13 +51,19 @@
                 <div class="card text-right">
                     <div class="card-body">
                         <h5 class="card-title"></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{$i->created_at}} by:{{$i->user->username}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Upload : {{$i->created_at}} - Edited : {{$i->updated_at}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">By : {{$i->user->username}}</h6>
                         <p class="card-text">{{$i->answer}}</p>
                         @if(Auth::user()->id === $i->user_id)
                             <form action='{{url("/forum/answer/$i->id")}}' method="post" class="d-inline">
                                 @method('patch')
                                 @csrf
                                 <button type="submit" class="btn btn-success">Edit</button>
+                            </form>
+                            <form method="post" action='{{url("/forum/answer/$i->id")}}' class="d-inline ml-3">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         @endif
                     </div>
