@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{$question->question}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{$question->created_at}} Author:{{$question->user->username}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{$question->created_at}} - {{$question->user->username}}</h6>
                         <p class="card-text">{{$question->detail_question}}</p>
 
                         @if( Auth::user()->id === $question->user_id )
