@@ -50,6 +50,9 @@ class AnswersController extends Controller
 
      public function store($question_id,Request $request)
     {
+        $request->validate([
+            "answer" => "required",
+        ]);
         Answer::create([
             'answer' => $request->answer,
             'question_id' => $question_id,

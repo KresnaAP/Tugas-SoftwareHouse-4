@@ -8,8 +8,14 @@
             <form method="post" action='{{url("/forum/search")}}' class="d-inline ml-3">
                 @csrf
                 <div class="form-group">
-                    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Keyword">
+                    <input type="text" class="form-control @error('keyword') is-invalid @enderror" id="keyword" name="keyword" placeholder="Keyword">
+                    @error('keyword')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                    @enderror
                 </div>
+
                 <button type="submit" class="btn btn-success">Search</button>
             </form>
         </div>

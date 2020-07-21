@@ -52,7 +52,6 @@ class QuestionsController extends Controller
     public function store(Request $request)
     {
         //
-        // Question::create($request->all());
         $request->validate([
             "question" => "required",
             "detail_question" => "required",
@@ -123,6 +122,10 @@ class QuestionsController extends Controller
     }
 
     public function search(Request $request){
+
+        $request->validate([
+            "keyword" => "required",
+        ]);
         $question=Question::where('question','like',"%$request->keyword%")
             ->orderByRaw('created_at DESC')
             ->paginate(5);

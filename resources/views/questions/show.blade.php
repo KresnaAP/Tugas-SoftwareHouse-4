@@ -37,7 +37,12 @@
 
                     <div class="form-group">
                         <label for="answer">Answer</label>
-                        <textarea class="form-control" id="answer" name="answer" rows="3"></textarea>
+                        <textarea class="form-control @error('answer') is-invalid @enderror" id="answer" name="answer" rows="3"></textarea>
+                        @error('answer')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
                     </div>
 
                     <button type="submit" class="btn btn-primary">Post</button>
