@@ -28,6 +28,6 @@ Route::get('/forum/{question}','QuestionsController@show');
 
 Route::put('/forum/{id}','AnswersController@store');
 
-Route::patch('/forum/{question}','QuestionsController@edit');
+Route::patch('/forum/{question}/edit','QuestionsController@edit');
 Route::post('/forum/{question}/update','QuestionsController@update');
 

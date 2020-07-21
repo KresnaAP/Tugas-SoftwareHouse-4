@@ -11,7 +11,7 @@
                         <p class="card-text">{{$question->detail_question}}</p>
 
                         @if( Auth::user()->id === $question->user_id )
-                            <form action="{{$question->id}}" method="post" class="d-inline">
+                            <form action="{{$question->id}}/edit" method="post" class="d-inline">
                                 @method('patch')
                                 @csrf
                                 <button type="submit" class="btn btn-success">Edit</button>
