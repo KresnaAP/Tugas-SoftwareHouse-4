@@ -89,7 +89,6 @@ class QuestionsController extends Controller
                 'detail_question' => $request->detail_question,
             ]);
 
-
         return redirect("/forum/$question->id")->with('status','Success');
     }
 
@@ -99,8 +98,11 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Question $question)
     {
         //
+        Question::destroy($question->id);
+
+        return redirect("/forum")->with('status','Success');
     }
 }

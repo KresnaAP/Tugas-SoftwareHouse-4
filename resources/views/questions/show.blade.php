@@ -9,7 +9,7 @@
                         <h5 class="card-title">{{$question->question}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{$question->created_at}} - {{$question->user->username}}</h6>
                         <p class="card-text">{{$question->detail_question}}</p>
-                        
+
                         @if( Auth::user()->id === $question->user_id)
                             <form action='{{url("/forum/$question->id")}}' method="post" class="d-inline">
                                 @method('patch')
@@ -17,7 +17,9 @@
                                 <button type="submit" class="btn btn-success">Edit</button>
                             </form>
 
-                            <form action="" class="d-inline ml-3">
+                            <form method="post" action="{{url("/forum/$question->id")}}" class="d-inline ml-3">
+                                @method('delete')
+                                @csrf
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         @endif
@@ -57,7 +59,7 @@
                                 <button type="submit" class="btn btn-danger">Edit</button>
                             </form>
                         @endif
-                    </div>    
+                    </div>
                 </div>
             </div>
         </div>
