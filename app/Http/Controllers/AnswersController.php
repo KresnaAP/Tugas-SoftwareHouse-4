@@ -27,7 +27,7 @@ class AnswersController extends Controller
     {
         //
         $lista=Answer::where('user_id', auth()->id())->orderByRaw('created_at DESC')->paginate(5);
-        return view('questions/answer',compact('lista'));
+        return view('answers/answer',compact('lista'));
     }
 
     /**
