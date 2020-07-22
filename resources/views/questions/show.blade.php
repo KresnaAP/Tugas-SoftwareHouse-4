@@ -34,6 +34,12 @@
                 @error('question')
                     <br>{{ $message }}
                 @enderror
+
+                @error('editanswer')
+                    <br>The answer field is required.
+                @enderror
+
+
             </div>
         @endif
         <div class="row mt-2">
