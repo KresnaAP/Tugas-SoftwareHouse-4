@@ -28,7 +28,14 @@
                 </div>
             </div>
         </div>
-
+        @if (session('status'))
+            <div class="alert alert-warning">
+                {{ session('status') }}
+                @error('question')
+                    <br>{{ $message }}
+                @enderror
+            </div>
+        @endif
         <div class="row mt-2">
             <div class="col">
                 <form action='{{url("/forum/$question->id")}}' method="POST">

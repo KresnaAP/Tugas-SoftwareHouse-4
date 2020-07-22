@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Question;
 
 class QuestionsController extends Controller
@@ -98,13 +99,25 @@ class QuestionsController extends Controller
     public function update(Request $request, Question $question)
     {
         //
+        $validator = Validator::make($request->all(), [
+            "question" => "required",
+            "detail_question" => "required",
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->with('status','Update unsuccessfull');
+        }
+
         Question::where('id',$question->id)
             ->update([
                 'question' => $request->question,
                 'detail_question' => $request->detail_question,
             ]);
 
-        return redirect("/forum/$question->id")->with('status','Success');
+        return redirect("/forum/$question->id")->with('status','Updated successfully');
     }
 
     /**

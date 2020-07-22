@@ -7,8 +7,8 @@
             @csrf
 
             <div class="form-group">
-                <label for="answer">Answer</label>
-                <textarea class="form-control" id="answer" name="answer" rows="3">{{$answer->answer}}</textarea>
+                <label for="editanswer">Answer</label>
+                <textarea class="form-control" id="editanswer" name="editanswer" rows="3">{{$answer->answer}}</textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Post</button>
