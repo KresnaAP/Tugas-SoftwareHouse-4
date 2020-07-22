@@ -29,7 +29,7 @@
             </div>
         </div>
         @if (session('status'))
-            <div class="alert alert-warning">
+            <div class="alert alert-warning mt-3">
                 {{ session('status') }}
                 @error('question')
                     <br>{{ $message }}
@@ -38,8 +38,6 @@
                 @error('editanswer')
                     <br>The answer field is required.
                 @enderror
-
-
             </div>
         @endif
         <div class="row mt-2">
