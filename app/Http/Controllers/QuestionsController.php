@@ -135,10 +135,14 @@ class QuestionsController extends Controller
     }
 
     public function search(Request $request){
-
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             "keyword" => "required",
         ]);
+
+        if ($validator->fails()) {
+            return redirect('/forum');
+        }
+
         $question=Question::where('question','like',"%$request->keyword%")
             ->orderByRaw('created_at DESC')
             ->paginate(5);
