@@ -6,7 +6,7 @@
 
         <form method="post" action='{{url("/forum/search")}}' class="d-inline form-inline ml-5">
             @csrf
-            <input type="text" class="form-control w-50 @error('keyword') is-invalid @enderror" id="keyword" name="keyword" placeholder="Keyword">
+            <input type="text" class="form-control w-50 @error('keyword') is-invalid @enderror" id="keyword" name="keyword" placeholder="Keyword" value="@isset($keyword){{$keyword}}@endisset">
 
             <button type="submit" class="btn btn-success ml-2">Search</button>
         </form>

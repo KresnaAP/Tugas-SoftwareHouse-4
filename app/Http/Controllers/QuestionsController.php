@@ -147,6 +147,7 @@ class QuestionsController extends Controller
             ->orderByRaw('created_at DESC')
             ->paginate(5);
 
-        return view('questions.index',compact('question'));
+        $keyword=$request->keyword;
+        return view('questions.index',compact('question','keyword'));
     }
 }
