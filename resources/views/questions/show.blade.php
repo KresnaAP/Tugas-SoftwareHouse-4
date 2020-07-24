@@ -21,7 +21,7 @@
                             <form method="post" action='{{url("/forum/$question->id")}}' class="d-inline ml-3">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                             </form>
                         @endif
                     </div>
@@ -79,7 +79,7 @@
                             <form method="post" action='{{url("/forum/answer/$i->id")}}' class="d-inline ml-3">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                             </form>
                         @endif
                     </div>
