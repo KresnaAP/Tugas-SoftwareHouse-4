@@ -17,7 +17,7 @@
         @endif
 
         <div class="list-group mt-4">
-            @foreach($question as $i)
+            @forelse($question as $i)
            
                 <a href='{{url("forum/$i->id")}}' class="list-group-item list-group-item-action">
                     
@@ -32,8 +32,11 @@
                     </div>
                     
                 </a>
-            
-            @endforeach
+            @empty
+                <div class="list-group-item disabled text-center font-italic">
+                    No Data Available
+                </div>
+            @endforelse
             <div class="mt-3">
                 {{ $question->links() }}
             </div>

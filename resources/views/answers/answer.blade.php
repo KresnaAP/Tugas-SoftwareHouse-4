@@ -6,7 +6,7 @@
         <h2>List of Answers</h2>
 
         <div class="list-group mt-3">
-            @foreach($lista as $i)
+            @forelse($lista as $i)
                 <a href='{{url("forum/$i->question_id")}}' class="list-group-item list-group-item-action">
                     <div class="row">
                         <div class="col-lg-6">
@@ -18,7 +18,11 @@
 
                     </div>
                 </a>
-            @endforeach
+            @empty
+                <div class="list-group-item disabled text-center font-italic">
+                    No Data Available
+                </div>
+            @endforelse
             <div class="mt-3">
                 {{ $lista->links() }}
             </div>
