@@ -126,6 +126,6 @@ class AnswersController extends Controller
         $getid=$answer->question_id;
         Answer::destroy($answer->id);
 
-        return redirect("/forum/$getid")->with('status','Success');
+        return redirect("/forum/$getid")->with('status','Deleted Successfully');
     }
 }

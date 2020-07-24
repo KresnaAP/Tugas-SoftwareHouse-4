@@ -131,7 +131,7 @@ class QuestionsController extends Controller
         //
         Question::destroy($question->id);
 
-        return redirect("/forum")->with('status','Success');
+        return redirect("/forum")->with('status','Deleted Successfully');
     }
 
     public function search(Request $request){
