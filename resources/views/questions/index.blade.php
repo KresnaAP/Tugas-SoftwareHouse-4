@@ -1,24 +1,20 @@
 @extends('layouts/app')
 
 @section('content')
-    <div class="container">
-        <a href="{{url('/forum/create')}}" class="btn btn-primary">Add New Question</a>
+    <div class="container mt-3">
+        <a href="{{url('/forum/create')}}" class="btn btn-primary d-inline">Add New Question</a>
 
-        <div class="mt-1">
-            <form method="post" action='{{url("/forum/search")}}' class="d-inline ml-3">
-                @csrf
-                <div class="form-group">
-                    <input type="text" class="form-control @error('keyword') is-invalid @enderror" id="keyword" name="keyword" placeholder="Keyword">
-                    @error('keyword')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                    @enderror
-                </div>
+        <form method="post" action='{{url("/forum/search")}}' class="d-inline form-inline ml-5">
+            @csrf
+            <input type="text" class="form-control w-50 @error('keyword') is-invalid @enderror" id="keyword" name="keyword" placeholder="Keyword">
 
-                <button type="submit" class="btn btn-success">Search</button>
-            </form>
-        </div>
+            <button type="submit" class="btn btn-success ml-2">Search</button>
+        </form>
+        @if (session('status'))
+            <div class="alert alert-warning mt-3">
+                {{ session('status') }}
+            </div>
+        @endif
 
         <div class="list-group mt-4">
             @foreach($question as $i)

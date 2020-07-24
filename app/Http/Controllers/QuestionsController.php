@@ -140,7 +140,7 @@ class QuestionsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/forum');
+            return redirect('/forum')->with('status','Search cannot be empty');
         }
 
         $question=Question::where('question','like',"%$request->keyword%")
