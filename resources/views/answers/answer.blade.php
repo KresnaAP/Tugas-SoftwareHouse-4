@@ -8,9 +8,14 @@
         <div class="list-group mt-3">
             @foreach($lista as $i)
                 <a href='{{url("forum/$i->question_id")}}' class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">{{$i->answer}}</h5>
-                        <small>Upload time : {{$i->created_at}}</small>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h5 class="mb-1">{{ Str::limit($i->answer, 16, $end='...') }}</h5>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <small>Upload : {{$i->created_at}} - Edited : {{$i->updated_at}}</small>
+                        </div>
+
                     </div>
                 </a>
             @endforeach

@@ -18,13 +18,21 @@
 
         <div class="list-group mt-4">
             @foreach($question as $i)
-            <a href='{{url("forum/$i->id")}}' class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{$i->question}}</h5>
-                    <small>Upload : {{$i->created_at}} - Edited : {{$i->updated_at}}</small>
-                    <small>by : {{$i->user->username}}</small>
-                </div>
-            </a>
+           
+                <a href='{{url("forum/$i->id")}}' class="list-group-item list-group-item-action">
+                    
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <h5 class="mb-1">{{ Str::limit($i->question, 16, $end='...') }}</h5>
+                        </div>
+                        <div class="col-lg-9 text-right">
+                            <small>Upload : {{$i->created_at}} - Edited : {{$i->updated_at}} by : {{$i->user->username}}</small>
+                        </div>
+
+                    </div>
+                    
+                </a>
+            
             @endforeach
             <div class="mt-3">
                 {{ $question->links() }}
