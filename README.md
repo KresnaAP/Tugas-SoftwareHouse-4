@@ -1,4 +1,6 @@
-# Instruction :
+# FORUM DISKUSI ONLINE
+
+## Instruction :
 1. Install `laravel/ui` package
 
     ```sh
