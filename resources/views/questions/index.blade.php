@@ -2,14 +2,20 @@
 
 @section('content')
     <div class="container mt-3">
-        <a href="{{url('/forum/create')}}" class="btn btn-primary d-inline">Add New Question</a>
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <a href="{{url('/forum/create')}}" class="btn btn-primary">Add New Question</a>
+            </div>
+            <div class="col-md-9">
+                <form method="post" action='{{url("/forum/search")}}' class="form-inline mb-3">
+                    @csrf
+                    <input type="text" class="form-control w-50 @error('keyword') is-invalid @enderror" id="keyword" name="keyword" placeholder="Keyword" value="@isset($keyword){{$keyword}}@endisset">
 
-        <form method="post" action='{{url("/forum/search")}}' class="d-inline form-inline ml-5">
-            @csrf
-            <input type="text" class="form-control w-50 @error('keyword') is-invalid @enderror" id="keyword" name="keyword" placeholder="Keyword" value="@isset($keyword){{$keyword}}@endisset">
+                    <button type="submit" class="btn btn-success ml-2">Search</button>
+                </form>
+            </div>
+        </div>
 
-            <button type="submit" class="btn btn-success ml-2">Search</button>
-        </form>
         @if (session('status'))
             <div class="alert alert-warning mt-3">
                 {{ session('status') }}
@@ -18,9 +24,9 @@
 
         <div class="list-group mt-4">
             @forelse($question as $i)
-           
+
                 <a href='{{url("forum/$i->id")}}' class="list-group-item list-group-item-action">
-                    
+
                     <div class="row">
                         <div class="col-lg-3">
                             <h5 class="mb-1">{{ Str::limit($i->question, 16, $end='...') }}</h5>
@@ -30,7 +36,7 @@
                         </div>
 
                     </div>
-                    
+
                 </a>
             @empty
                 <div class="list-group-item disabled text-center font-italic">
